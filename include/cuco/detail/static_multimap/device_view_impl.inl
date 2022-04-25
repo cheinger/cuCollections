@@ -764,7 +764,7 @@ class static_multimap<Key, Value, Scope, Allocator, ProbeSequence>::device_view_
    */
   template <bool uses_vector_load, bool is_outer, typename CG, typename PairEqual>
   __device__ __forceinline__ std::enable_if_t<uses_vector_load, std::size_t> pair_count(
-    CG const& g, value_type const& pair, PairEqual pair_equal) noexcept
+    CG const& g, value_type const& pair, PairEqual& pair_equal) noexcept
   {
     std::size_t count = 0;
     auto key          = pair.first;

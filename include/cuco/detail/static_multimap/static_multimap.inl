@@ -588,7 +588,7 @@ __device__ __forceinline__ std::size_t
 static_multimap<Key, Value, Scope, Allocator, ProbeSequence>::device_view::pair_count(
   cooperative_groups::thread_block_tile<ProbeSequence::cg_size> const& g,
   value_type const& pair,
-  PairEqual pair_equal) noexcept
+  PairEqual& pair_equal) noexcept
 {
   constexpr bool is_outer = false;
   return impl_.pair_count<uses_vector_load(), is_outer>(g, pair, pair_equal);
@@ -604,7 +604,7 @@ __device__ __forceinline__ std::size_t
 static_multimap<Key, Value, Scope, Allocator, ProbeSequence>::device_view::pair_count_outer(
   cooperative_groups::thread_block_tile<ProbeSequence::cg_size> const& g,
   value_type const& pair,
-  PairEqual pair_equal) noexcept
+  PairEqual& pair_equal) noexcept
 {
   constexpr bool is_outer = true;
   return impl_.pair_count<uses_vector_load(), is_outer>(g, pair, pair_equal);
